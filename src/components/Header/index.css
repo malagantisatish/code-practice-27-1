@@ -1,0 +1,79 @@
+/* Write your CSS code here */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20vh;
+  width: 100vw;
+}
+
+.header-container {
+  display: flex;
+}
+
+.website-logo-img-size {
+  height: 50px;
+}
+
+.nav-options-container {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    height: 50px;
+    width: 100px;
+    border-radius: 8px;
+    color: white;
+    border-width: 0px;
+    margin: 10px;
+    background-color: #0b69ff;
+  }
+  .logout-button-for-sm {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .button {
+    display: none;
+  }
+  .logout-button-for-sm {
+    height: 20px;
+    background-color: transparent;
+    border-width: 0px;
+  }
+  .logout-image {
+    height: 30px;
+  }
+  .nav-options-container {
+    display: flex;
+    background-color: #e6f6ff;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .nav-options {
+    font-size: 20px;
+    padding: 10px;
+  }
+  .nav-option-img-sm {
+    display: none;
+  }
+  .nav-options-container {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .nav-options {
+    display: none;
+  }
+  .nav-option-img-sm {
+    height: 30px;
+  }
+}

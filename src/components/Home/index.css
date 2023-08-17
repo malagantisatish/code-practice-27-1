@@ -1,0 +1,28 @@
+/* Write your CSS code here */
+@media screen and (min-width: 768px) {
+  .home-container {
+    display: flex;
+    height: 80vh;
+    width: 100vw;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+.btn {
+  height: 50px;
+  width: 120px;
+  border-radius: 12px;
+  color: white;
+  background-color: #0b69ff;
+  border-width: 0px;
+}
+
+@media screen and (max-width: 767px) {
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 100vw;
+  }
+}
