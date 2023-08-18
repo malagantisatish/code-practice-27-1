@@ -2,7 +2,7 @@ import {Component} from 'react'
 import './index.css'
 
 class LoginForm extends Component {
-  state = {username: '', userPassword: ''}
+  state = {username: '', userPassword: '', isErrorMsg: false, errorMSg: ''}
 
   getUsername = event => {
     this.setState({username: event.target.value})
@@ -26,6 +26,7 @@ class LoginForm extends Component {
           className="input-element"
           value={username}
           onChange={this.getUsername}
+          placeholder="Username"
         />
       </div>
     )
@@ -45,15 +46,25 @@ class LoginForm extends Component {
           value={userPassword}
           onChange={this.getUserPassword}
           type="password"
+          placeholder="password"
         />
       </div>
     )
   }
 
+  onSubmitSuccess = () => {
+    const {history} = this.props
+    history.replace('/')
+  }
+
+  onSubmitFailure = error => {
+    this.setState({isErrorMsg: true, errorMsg: error})
+  }
+
   submitTheLoginDetails = async event => {
     event.preventDefault()
     const {username, userPassword} = this.state
-    const userDetails = {username, userPassword}
+    const userDetails = {username, password: userPassword}
     const url = 'https://apis.ccbp.in/login'
     const options = {
       method: 'POST',
@@ -61,10 +72,15 @@ class LoginForm extends Component {
     }
     const response = await fetch(url, options)
     const data = await response.json()
-    console.log(data)
+    if (response.ok === true) {
+      this.onSubmitSuccess()
+    } else {
+      this.onSubmitFailure(data.error_msg)
+    }
   }
 
   render() {
+    const {isErrorMsg, errorMsg} = this.state
     return (
       <div className="login-container">
         <img
@@ -85,6 +101,7 @@ class LoginForm extends Component {
             <button type="submit" className="login-btn">
               Login
             </button>
+            {isErrorMsg && <p className="error-msg">*{errorMsg}</p>}
           </form>
         </div>
       </div>

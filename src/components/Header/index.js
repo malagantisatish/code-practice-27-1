@@ -20,7 +20,7 @@ const Header = () => (
           />
         </Link>
         <Link to="/product">
-          <li className="nav-options">Product</li>
+          <li className="nav-options">Products</li>
           <img
             src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-products-icon.png"
             className="nav-option-img-sm"
